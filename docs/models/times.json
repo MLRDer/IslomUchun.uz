@@ -1,0 +1,80 @@
+{
+    "TimesUpdate": {
+        "properties": {
+            "year": {
+                "type": "number",
+                "required": true
+            },
+            "month": {
+                "type": "string",
+                "required": true
+            },
+            "month_ru": {
+                "type": "string",
+                "required": true
+            },
+            "hijri_month": {
+                "type": "string",
+                "required": true
+            },
+            "hijri_month_ru": {
+                "type": "string",
+                "required": true
+            },
+            "region": {
+                "type": "string",
+                "required": true
+            },
+            "region_ru": {
+                "type": "string",
+                "required": true
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "day": {
+                            "type": "number"
+                        },
+                        "hijri_day": {
+                            "type": "number"
+                        },
+                        "day_name": {
+                            "type": "string"
+                        },
+                        "day_name_ru": {
+                            "type": "string"
+                        },
+                        "fajr": {
+                            "type": "string"
+                        },
+                        "sunrise": {
+                            "type": "string"
+                        },
+                        "dhuhr": {
+                            "type": "string"
+                        },
+                        "asr": {
+                            "type": "string"
+                        },
+                        "maghrib": {
+                            "type": "string"
+                        },
+                        "isha": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "TimesCreate": {
+        "properties": {
+            "month": {
+                "type": "number",
+                "required": true
+            }
+        }
+    }
+}

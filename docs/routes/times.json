@@ -1,0 +1,110 @@
+{
+    "/api/times/": {
+        "get": {
+            "description": "Get prayer times by filter",
+            "tags": ["Times"],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "region",
+                    "description": "default region is 'Toshkent'",
+                    "type": "string"
+                },
+                {
+                    "in": "query",
+                    "name": "month",
+                    "description": "Capitalized Month name in latin, like 'Yanvar'",
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create prayer times for all regions (do not use this route)",
+            "tags": ["Times"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TimesCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/times/{id}": {
+        "get": {
+            "description": "Get prayer times by ID",
+            "tags": ["Times"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Prayer time ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update prayer time (do not update data field)",
+            "tags": ["Times"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Prayer Time ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TimesUpdate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete Prayer Time",
+            "tags": ["Times"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Prayer Time ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+module.exports = {
+    Toshkent: 27,
+    Andijon: 1,
+    Buxoro: 4,
+    Guliston: 5,
+    Samarqand: 18,
+    Namangan: 15,
+    Navoiy: 14,
+    Jizzax: 9,
+    Nukus: 16,
+    Qarshi: 25,
+    Qoqon: 26,
+    Xiva: 21,
+    Margilon: 13,
+};
