@@ -23,7 +23,7 @@ app.use("/api/docs", swagger.serve, swagger.setup(swaggerDocs));
 
 app.get("/", async (_, res) => {
     const visit = await Visit.findByIdAndUpdate(
-        "600d52b95b77461fc064aaae",
+        "600d6869db5d722e539c4b81",
         {
             $inc: {
                 count: 1,
