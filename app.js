@@ -7,6 +7,7 @@ const swaggerDocs = require("./docs");
 const globalErrorHandler = require("./controllers/error");
 const AppError = require("./utils/appError");
 const indexRouter = require("./routes");
+const Visit = require("./models/Visit");
 
 // Initialize express app
 const app = express();
@@ -20,11 +21,49 @@ app.use(cors());
 // Routes
 app.use("/api/docs", swagger.serve, swagger.setup(swaggerDocs));
 
-app.get("/", (_, res) =>
+app.get("/", async (_, res) => {
+    const visit = await Visit.findByIdAndUpdate(
+        "600d52b95b77461fc064aaae",
+        {
+            $inc: {
+                count: 1,
+            },
+        },
+        { new: true }
+    );
+
     res.send(
-        '<div style="font-size: 48;font-family: Consolas; top: 50%; left: 50%; transform: translate(-50%, -50%); position: absolute;">⚠️ Do not use this route!</div>'
-    )
-);
+        `<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IslomUchun.uz</title>
+      </head>
+      <body style="background-color: #571a90">
+        <h1
+          style="
+            color: #9742e7;
+            font-size: 8rem;
+            text-align: center;
+            font-family: sans-serif;
+          "
+        >
+          Tez kunda...
+        </h1>
+        <h4
+          style="
+            color: #9742e7;
+            font-size: 4rem;
+            text-align: center;
+            font-family: sans-serif;
+          "
+        >
+          ${visit.count}
+        </h4>
+      </body>
+    </html>
+        `
+    );
+});
 
 // handles all routes of /api route
 indexRouter(app);
