@@ -43,7 +43,7 @@ app.get("/", async (_, res) => {
               href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
               rel="stylesheet"
             />
-            <title>Document</title>
+            <title>IslomUchun.uz</title>
         
             <style>
               h1 {
@@ -106,9 +106,9 @@ app.get("/", async (_, res) => {
             <a class="outlined_icon" href="https://t.me/IslomUchun_official">
               <i class="bx bxl-telegram bx-sm" style="color: white"></i>
             </a>
-            <h1 class="coming_soon">Coming Soon...</h1>
+            <h1 class="coming_soon">Tez kunda...</h1>
             <h2 class="tg_group_text">
-              Telegram guruhga qo'shilish
+              Telegram kanalga qo'shilish
               <i class="bx bxs-smile bx-lg" style="color: yellow"></i>
             </h2>
             ${visit.count}
