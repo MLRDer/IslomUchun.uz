@@ -1,0 +1,36 @@
+{
+    "QuizCreate": {
+        "properties": {
+            "question": {
+                "type": "string",
+                "required": true
+            },
+            "options": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "option": {
+                            "type": "string",
+                            "required": true
+                        },
+                        "isCorrect": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                }
+            },
+            "description": {
+                "type": "string",
+                "required": true
+            },
+            "tags": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

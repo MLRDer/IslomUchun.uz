@@ -33,34 +33,87 @@ app.get("/", async (_, res) => {
     );
 
     res.send(
-        `<head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>IslomUchun.uz</title>
-      </head>
-      <body style="background-color: #571a90">
-        <h1
-          style="
-            color: #9742e7;
-            font-size: 8rem;
-            text-align: center;
-            font-family: sans-serif;
-          "
-        >
-          Tez kunda...
-        </h1>
-        <h4
-          style="
-            color: #9742e7;
-            font-size: 4rem;
-            text-align: center;
-            font-family: sans-serif;
-          "
-        >
-          ${visit.count}
-        </h4>
-      </body>
-    </html>
+        `<!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!-- Boxicons CSS -->
+            <link
+              href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+              rel="stylesheet"
+            />
+            <title>Document</title>
+        
+            <style>
+              h1 {
+                color: #9742e7;
+                font-size: 8rem;
+                text-align: center;
+                font-family: sans-serif;
+              }
+        
+              h2 {
+                color: #9742e7;
+                font-size: 5rem;
+                text-align: center;
+                font-family: sans-serif;
+              }
+        
+              .tg_group_text {
+                opacity: 0;
+                transition: all 0.3s;
+              }
+        
+              .outlined_icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                display: inline-block;
+                padding: 0.5rem;
+                border-radius: 50%;
+                background-color: #9742e7;
+                cursor: pointer;
+                box-shadow: "2px 3px 6px 0 #0000002";
+                transition: all 0.3s;
+              }
+        
+              .outlined_icon:hover {
+                background-color: #8b2be4;
+              }
+        
+              .outlined_icon:hover ~ .tg_group_text {
+                opacity: 1;
+              }
+        
+              h1,
+              h2 {
+                text-align: center;
+              }
+        
+              @media (max-width: 700px) {
+                h1 {
+                  font-size: 4rem;
+                }
+        
+                h2 {
+                  font-size: 2rem;
+                }
+              }
+            </style>
+          </head>
+          <body style="background-color: #571a90">
+            <a class="outlined_icon" href="https://t.me/IslomUchun_official">
+              <i class="bx bxl-telegram bx-sm" style="color: white"></i>
+            </a>
+            <h1 class="coming_soon">Coming Soon...</h1>
+            <h2 class="tg_group_text">
+              Telegram guruhga qo'shilish
+              <i class="bx bxs-smile bx-lg" style="color: yellow"></i>
+            </h2>
+            ${visit.count}
+          </body>
+        </html>        
         `
     );
 });

@@ -1,0 +1,110 @@
+{
+    "/api/quiz/": {
+        "get": {
+            "description": "Get quizzes by filter",
+            "tags": ["Quiz"],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "count",
+                    "description": "The number of quizzes to be returned randomly",
+                    "type": "string"
+                },
+                {
+                    "in": "query",
+                    "name": "tags",
+                    "description": "Tags to filter the quizzes (use , if you want to pass more than one tag)",
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create quiz",
+            "tags": ["Quiz"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/QuizCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/quiz/{id}": {
+        "get": {
+            "description": "Get quiz by ID",
+            "tags": ["Quiz"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Quiz ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update Quiz",
+            "tags": ["Quiz"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Quiz ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/QuizCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete Quiz",
+            "tags": ["Quiz"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Quiz ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}

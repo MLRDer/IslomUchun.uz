@@ -2,5 +2,9 @@
     {
         "name": "Times",
         "description": "Prayer Time endpoints."
+    },
+    {
+        "name": "Quiz",
+        "description": "Quiz endpoints."
     }
 ]
