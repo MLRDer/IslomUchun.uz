@@ -1,7 +1,9 @@
 const timesRouter = require("./times");
-const visit = require("../controllers/visit");
+const tagsRouter = require("./tags");
+const quizRouter = require("./quiz");
 
 module.exports = (app) => {
     app.use("/api/times", timesRouter);
-    app.get("/api/visit", visit.create);
+    app.use("/api/quiz", quizRouter);
+    app.use("/api/tags", tagsRouter);
 };

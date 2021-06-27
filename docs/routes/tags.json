@@ -1,0 +1,96 @@
+{
+    "/api/tags/": {
+        "get": {
+            "description": "Get tags",
+            "tags": ["Tag"],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create tag",
+            "tags": ["Tag"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TagCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/tags/{id}": {
+        "get": {
+            "description": "Get tag by ID",
+            "tags": ["Tag"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Tag ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update Tag",
+            "tags": ["Tag"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Tag ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TagCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete Tag",
+            "tags": ["Tag"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Tag ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}

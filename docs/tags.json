@@ -6,5 +6,9 @@
     {
         "name": "Quiz",
         "description": "Quiz endpoints."
+    },
+    {
+        "name": "Tag",
+        "description": "Tag endpoints."
     }
 ]
