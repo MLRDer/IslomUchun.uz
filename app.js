@@ -20,8 +20,9 @@ app.use(cors());
 
 // Routes
 app.use("/api/docs", swagger.serve, swagger.setup(swaggerDocs));
+app.use("/", express.static("islomnuri/build"));
 
-app.get("/", async (_, res) => {
+app.get("/count", async (_, res) => {
     const visit = await Visit.findByIdAndUpdate(
         "600d6869db5d722e539c4b81",
         {
