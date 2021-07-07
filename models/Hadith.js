@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const articleSchema = new Schema({
+const hadithSchema = new Schema({
     uz: {
         title: {
             type: String,
             requiered: true,
         },
-        content: {
+        hadith: {
+            type: String,
+            requiered: true,
+        },
+        origin: {
             type: String,
             requiered: true,
         },
@@ -17,20 +21,14 @@ const articleSchema = new Schema({
             type: String,
             requiered: true,
         },
-        content: {
+        hadith: {
             type: String,
             requiered: true,
         },
-    },
-    tags: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Tags",
+        origin: {
+            type: String,
+            requiered: true,
         },
-    ],
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: "Users",
     },
     view: {
         type: Number,
@@ -42,4 +40,4 @@ const articleSchema = new Schema({
     },
 });
 
-module.exports = mongoose.model("Articles", articleSchema);
+module.exports = mongoose.model("Hadiths", hadithSchema);
