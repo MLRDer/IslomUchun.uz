@@ -1,0 +1,104 @@
+{
+    "/api/hadith/": {
+        "get": {
+            "description": "Get Hadiths",
+            "tags": ["Hadith"],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "page",
+                    "description": "page number for pagination. |* default is 0",
+                    "type": "number"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create Hadith",
+            "tags": ["Hadith"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/HadithCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/hadith/{id}": {
+        "get": {
+            "description": "Get Hadith by ID",
+            "tags": ["Hadith"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Hadith ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update Hadith",
+            "tags": ["Hadith"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Hadith ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/HadithCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete Hadith",
+            "tags": ["Hadith"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Hadith ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}

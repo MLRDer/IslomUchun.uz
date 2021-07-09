@@ -1,0 +1,104 @@
+{
+    "/api/books/": {
+        "get": {
+            "description": "Get books",
+            "tags": ["Book"],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "page",
+                    "description": "page number for pagination. |* default is 0",
+                    "type": "number"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create book",
+            "tags": ["Book"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/BookCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/books/{id}": {
+        "get": {
+            "description": "Get book by ID",
+            "tags": ["Book"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Book ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update Book",
+            "tags": ["Book"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Book ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/BookCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete book",
+            "tags": ["Book"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Book ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}

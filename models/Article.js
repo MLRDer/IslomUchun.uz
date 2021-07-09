@@ -22,6 +22,10 @@ const articleSchema = new Schema({
             requiered: true,
         },
     },
+    image: {
+        type: String,
+        required: true,
+    },
     tags: [
         {
             type: Schema.Types.ObjectId,

@@ -1,0 +1,42 @@
+{
+    "BookCreate": {
+        "uz": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "type": "string",
+                    "required": true
+                },
+                "url": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "ru": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "type": "string",
+                    "required": true
+                },
+                "url": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "image": {
+            "type": "string",
+            "required": true
+        }
+    }
+}

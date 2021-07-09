@@ -1,0 +1,38 @@
+{
+    "HadithCreate": {
+        "uz": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "required": true
+                },
+                "hadith": {
+                    "type": "string",
+                    "required": true
+                },
+                "origin": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "ru": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "required": true
+                },
+                "hadith": {
+                    "type": "string",
+                    "required": true
+                },
+                "origin": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}

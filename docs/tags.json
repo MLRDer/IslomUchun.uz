@@ -10,5 +10,17 @@
     {
         "name": "Tag",
         "description": "Tag endpoints."
+    },
+    {
+        "name": "Hadith",
+        "description": "Hadith endpoints."
+    },
+    {
+        "name": "Article",
+        "description": "Article endpoints."
+    },
+    {
+        "name": "Book",
+        "description": "Book endpoints. |* for possible future use"
     }
 ]

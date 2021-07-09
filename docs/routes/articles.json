@@ -1,0 +1,104 @@
+{
+    "/api/article/": {
+        "get": {
+            "description": "Get Articles",
+            "tags": ["Article"],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "page",
+                    "description": "page number for pagination. |* default is 0",
+                    "type": "number"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "post": {
+            "description": "Create Article",
+            "tags": ["Article"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/ArticleCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "OK"
+                }
+            }
+        }
+    },
+    "/api/article/{id}": {
+        "get": {
+            "description": "Get Article by ID",
+            "tags": ["Article"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Article ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "patch": {
+            "description": "Update Article",
+            "tags": ["Article"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Article ID",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "in": "body",
+                    "name": "Body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/ArticleCreate"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                }
+            }
+        },
+        "delete": {
+            "description": "Delete Article",
+            "tags": ["Article"],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "id",
+                    "description": "Article ID",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+                "204": {
+                    "description": "OK"
+                }
+            }
+        }
+    }
+}
