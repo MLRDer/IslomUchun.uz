@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(IslomUchun.uz)", "..\IslomUchun.uz", "{22E68E37-77A5-BF11-EC7B-3B943F8B2BAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\IslomUchun.uz\node_modules\node-addon-api", "{83AB060A-A751-7CE1-1BCC-2AC53753545C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\IslomUchun.uz\node_modules", "{1E94AF58-2383-C190-5F72-0528C6A07976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(src)", "..\IslomUchun.uz\node_modules\node-addon-api\src", "{DE28AE6A-0E97-28F4-88D8-09B26DCF8465}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "converter", "converter.vcxproj", "{E185BB43-95EE-5C54-67B8-8665E9CA2ED2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F} = {5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "..\..\..\node_modules\node-addon-api\src\nothing.vcxproj", "{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}.Debug|x64.ActiveCfg = Debug|x64
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}.Debug|x64.Build.0 = Debug|x64
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}.Release|x64.ActiveCfg = Release|x64
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F}.Release|x64.Build.0 = Release|x64
+		{E185BB43-95EE-5C54-67B8-8665E9CA2ED2}.Debug|x64.ActiveCfg = Debug|x64
+		{E185BB43-95EE-5C54-67B8-8665E9CA2ED2}.Debug|x64.Build.0 = Debug|x64
+		{E185BB43-95EE-5C54-67B8-8665E9CA2ED2}.Release|x64.ActiveCfg = Release|x64
+		{E185BB43-95EE-5C54-67B8-8665E9CA2ED2}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1E94AF58-2383-C190-5F72-0528C6A07976} = {22E68E37-77A5-BF11-EC7B-3B943F8B2BAB}
+		{DE28AE6A-0E97-28F4-88D8-09B26DCF8465} = {83AB060A-A751-7CE1-1BCC-2AC53753545C}
+		{83AB060A-A751-7CE1-1BCC-2AC53753545C} = {1E94AF58-2383-C190-5F72-0528C6A07976}
+		{5D4AAF9F-61C7-986F-5699-5CDC74BAEE6F} = {DE28AE6A-0E97-28F4-88D8-09B26DCF8465}
+	EndGlobalSection
+EndGlobal
