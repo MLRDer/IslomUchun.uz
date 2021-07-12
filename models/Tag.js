@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const tagSchema = new mongoose.Schema({
-    name: {
+    name_uz: {
+        type: String,
+        required: true,
+    },
+    name_ru: {
         type: String,
         required: true,
     },

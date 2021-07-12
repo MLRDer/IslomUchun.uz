@@ -1,29 +1,32 @@
-#include<iostream>
 #include<algorithm>
+#include<iostream>
+#include<string>
+#include <locale>
+#include <codecvt>
 
 using namespace std;
 
-char lotin[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z'};
-char kiril[] = {'а', 'б', 'с', 'д', 'е', 'ф', 'г', 'ҳ', 'и', 'ж', 'к', 'л', 'м', 'н', 'о', 'п', 'қ', 'р', 'с', 'т', 'у', 'в', 'х', 'й', 'з'};
+char16_t lotin[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z'};
+char16_t kiril[] = {'а', 'б', 'с', 'д', 'е', 'ф', 'г', 'ҳ', 'и', 'ж', 'к', 'л', 'м', 'н', 'о', 'п', 'қ', 'р', 'с', 'т', 'у', 'в', 'х', 'й', 'з'};
 
-char Clotin[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'};
-char Ckiril[] = {'А', 'Б', 'С', 'Д', 'E', 'Ф', 'Г', 'Ҳ', 'И', 'Ж', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Қ', 'Р', 'С', 'Т', 'У', 'В', 'Х', 'Й', 'З'};
+char16_t Clotin[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'};
+char16_t Ckiril[] = {'А', 'Б', 'С', 'Д', 'E', 'Ф', 'Г', 'Ҳ', 'И', 'Ж', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Қ', 'Р', 'С', 'Т', 'У', 'В', 'Х', 'Й', 'З'};
 
-char checkL[] = {'b', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'q', 'r', 's', 't', 'v', 'z', 'D', 'G', 'I', 'J', 'L', 'N', 'Q', 'R', 'S', 'U', 'V', 'Y', 'Z'}; //30
-char checkK[] = {'б', 'д', 'ф', 'г', 'ҳ', 'и', 'ж', 'к', 'л', 'м', 'н', 'п', 'қ', 'т', 'в', 'й', 'з', 'Б', 'Д', 'Ф', 'Г', 'Ҳ', 'И', 'Ж', 'Л', 'П', 'Қ', 'У', 'Й', 'З'}; //30
+char16_t checkL[] = {'b', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'q', 'r', 's', 't', 'v', 'z', 'D', 'G', 'I', 'J', 'L', 'N', 'Q', 'R', 'S', 'U', 'V', 'Y', 'Z'}; //30
+char16_t checkK[] = {'б', 'д', 'ф', 'г', 'ҳ', 'и', 'ж', 'к', 'л', 'м', 'н', 'п', 'қ', 'т', 'в', 'й', 'з', 'Б', 'Д', 'Ф', 'Г', 'Ҳ', 'И', 'Ж', 'Л', 'П', 'Қ', 'У', 'Й', 'З'}; //30
 
-string lotinEx[] = {"sh", "ch", "ya", "yu", "yo", "o'", "oʼ", "g'", "gʼ", " ye", " e", "'", "ʼ"};
-string kirilEx[] = {"ш", "ч", "я", "ю", "ё", "ў", "ў", "ғ", "ғ", " е", " э", "ъ", "ъ"};
+u16string lotinEx[] = {u"sh", u"ch", u"ya", u"yu", u"yo", u"o'", u"oʼ", u"g'", u"gʼ", u" ye", u" e", u"'", u"ʼ"};
+u16string kirilEx[] = {u"ш", u"ч", u"я", u"ю", u"ё", u"ў", u"ў", u"ғ", u"ғ", u" е", u" э", u"ъ", u"ъ"};
 
-string ClotinEx[] = {"Sh", "Ch", "Ya", "Yu", "Yo", "O'", "Oʼ", "G'", "Gʼ", " Ye", " E"};
-string CkirilEx[] = {"Ш", "Ч", "Я", "Ю", "Ё", "Ў", "Ў", "Ғ", "Ғ", " Е", " Э"};
+u16string ClotinEx[] = {u"Sh", u"Ch", u"Ya", u"Yu", u"Yo", u"O'", u"Oʼ", u"G'", u"Gʼ", u" Ye", u" E"};
+u16string CkirilEx[] = {u"Ш", u"Ч", u"Я", u"Ю", u"Ё", u"Ў", u"Ў", u"Ғ", u"Ғ", u" Е", u" Э"};
 
 
 /*
  *      Function to replace all occurrences substring with another.
  *      Only for internal usage purpose!
  */
-void replaceAll(string base, string from, string to) {
+void replaceAll(u16string base, u16string from, u16string to) {
     while (true)
     {
         size_t start = base.find(from);
@@ -38,7 +41,7 @@ void replaceAll(string base, string from, string to) {
 /*
  *      Converts Lotin to Kiril
  */
-string ltok(string s)
+u16string ltok(u16string s)
 {
     // exceptions are first. This one is first because it has ' and ʼ
 	for(int i = 0; i < 13; i++) {
@@ -66,7 +69,7 @@ string ltok(string s)
 /*
  *      Converts Kiril to Lotin
  */
-string ktol(string s)
+u16string ktol(u16string s)
 {
 	// exceptions are first. This one is first because it has ' and ʼ
 	for(int i = 0; i < 13; i++) {
@@ -96,7 +99,7 @@ string ktol(string s)
  *      and decides in which alphabet the input string is.
  *      Returns strings of "lotin", "kiril" and "both" accordingly
  */
-string detect(string s)
+string detect(u16string s)
 {
     int l = 0, k = 0;
     size_t f;
@@ -130,12 +133,9 @@ string detect(string s)
     return "both";
 }
 
-// ------------test-------------
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-    string s = "вливар";
-    cout << ktol(s) << '\n';
-    cout << ltok(s);
-    return 0;
+    u16string str = ltok(u"djfbdhf");
+    std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> converter;
+    std::cout << converter.to_bytes(str) << std::endl;
 }

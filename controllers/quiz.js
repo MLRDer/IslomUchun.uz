@@ -3,10 +3,21 @@ const AppError = require("../utils/appError");
 const errors = require("../constants/errors");
 const Quiz = require("../models/Quiz");
 
+const converter = require("../utils/cpp_converter/index");
+
+exports.test = catchAsync(async (req, res, next) => {
+    const result = converter.ktol(req.query.str);
+
+    res.status(200).json({
+        success: true,
+        data: result,
+    });
+});
+
 exports.getAll = catchAsync(async (req, res, next) => {
     // implement get by tag
     // and get by count (randomly)
-    const quiz = await Quiz.find().lean();
+    const quiz = await Quiz.find().populate("tags").lean();
 
     res.status(200).json({
         success: true,
@@ -15,7 +26,7 @@ exports.getAll = catchAsync(async (req, res, next) => {
 });
 
 exports.get = catchAsync(async (req, res, next) => {
-    const quiz = await Quiz.findById(req.params.id).lean();
+    const quiz = await Quiz.findById(req.params.id).populate("tags").lean();
 
     if (!quiz) return next(new AppError(404, errors.NOT_FOUND));
 
