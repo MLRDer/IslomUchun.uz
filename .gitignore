@@ -10,6 +10,9 @@ package-lock.json
 
 db/
 
+#Cpp source code
+utils/*/cpp_converter/
+
 #Uploads
 uploads/
 
