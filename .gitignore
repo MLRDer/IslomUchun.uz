@@ -10,11 +10,6 @@ package-lock.json
 
 db/
 
-#Cpp source code
-utils/
-!/utils/appError.js
-!/utils/catchAsync.js
-
 #Uploads
 uploads/
 
