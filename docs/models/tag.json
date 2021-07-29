@@ -1,11 +1,7 @@
 {
     "TagCreate": {
         "properties": {
-            "name_uz": {
-                "type": "string",
-                "required": true
-            },
-            "name_ru": {
+            "name": {
                 "type": "string",
                 "required": true
             }

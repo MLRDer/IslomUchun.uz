@@ -2,24 +2,47 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const quizSchema = new Schema({
-    question: {
-        type: String,
-        required: true,
-    },
-    options: [
-        {
-            option: {
-                type: String,
-                required: true,
-            },
-            isCorrect: {
-                type: Boolean,
-                default: false,
-            },
+    uz: {
+        question: {
+            type: String,
+            required: true,
         },
-    ],
-    description: {
-        type: String,
+        options: [
+            {
+                option: {
+                    type: String,
+                    required: true,
+                },
+                isCorrect: {
+                    type: Boolean,
+                    default: false,
+                },
+            },
+        ],
+        description: {
+            type: String,
+        },
+    },
+    ru: {
+        question: {
+            type: String,
+            required: true,
+        },
+        options: [
+            {
+                option: {
+                    type: String,
+                    required: true,
+                },
+                isCorrect: {
+                    type: Boolean,
+                    default: false,
+                },
+            },
+        ],
+        description: {
+            type: String,
+        },
     },
     tags: [
         {

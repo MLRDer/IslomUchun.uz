@@ -2,6 +2,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const errors = require("../constants/errors");
 const Tag = require("../models/Tag");
+const converter = require("../utils/converter");
 
 exports.getAll = catchAsync(async (req, res, next) => {
     const tags = await Tag.find().lean();
@@ -24,7 +25,16 @@ exports.get = catchAsync(async (req, res, next) => {
 });
 
 exports.create = catchAsync(async (req, res, next) => {
-    const tag = await Tag.create(req.body);
+    const { name } = req.body;
+    let newTag = {
+        uz: {
+            name: converter.ktol(name),
+        },
+        ru: {
+            name: converter.ltok(name),
+        },
+    };
+    const tag = await Tag.create(newTag);
 
     res.status(201).json({
         success: true,

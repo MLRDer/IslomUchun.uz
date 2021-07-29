@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
 const tagSchema = new mongoose.Schema({
-    name_uz: {
-        type: String,
-        required: true,
+    uz: {
+        name: {
+            type: String,
+            required: true,
+        },
     },
-    name_ru: {
-        type: String,
-        required: true,
+    ru: {
+        name: {
+            type: String,
+            required: true,
+        },
     },
     createdAt: {
         type: Date,
