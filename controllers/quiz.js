@@ -45,15 +45,26 @@ exports.get = catchAsync(async (req, res, next) => {
 
 exports.create = catchAsync(async (req, res, next) => {
     const { question, options, description, tags } = req.body;
+
     let newQuiz = {
         uz: {
             question: converter.ktol(question),
-            options: options.map((option) => converter.ktol(option.option)),
+            options: options.map((option) => {
+                return {
+                    option: converter.ktol(option.option),
+                    isCorrect: option.isCorrect,
+                };
+            }),
             description: converter.ktol(description),
         },
         ru: {
             question: converter.ltok(question),
-            options: options.map((option) => converter.ltok(option.option)),
+            options: options.map((option) => {
+                return {
+                    option: converter.ltok(option.option),
+                    isCorrect: option.isCorrect,
+                };
+            }),
             description: converter.ltok(description),
         },
         tags: tags,
@@ -82,7 +93,7 @@ exports.update = catchAsync(async (req, res, next) => {
 });
 
 exports.delete = catchAsync(async (req, res, next) => {
-    await Quiz.findByIdandDelete(req.params.id);
+    await Quiz.findByIdAndDelete(req.params.id);
 
     res.status(204).json({
         success: true,

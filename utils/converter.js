@@ -202,6 +202,8 @@ const lotinEx = [
     "gʼ",
     " ye",
     " e",
+    " '",
+    "' ",
     "'",
     "ʼ",
 ];
@@ -218,6 +220,8 @@ const kirilEx = [
     "ғ",
     " е",
     " э",
+    " '",
+    "' ",
     "ъ",
     "ъ",
 ];
@@ -246,6 +250,8 @@ exports.ltok = (text) => {
     for (let i = 0; i < 13; i++) {
         text = text.replace(new RegExp(lotinEx[i], "g"), kirilEx[i]);
     }
+
+    if (text[0] == "ъ") text[0] = "'";
 
     // second exception
     for (let i = 0; i < 11; i++) {
