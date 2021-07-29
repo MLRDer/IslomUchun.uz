@@ -198,8 +198,10 @@ const lotinEx = [
     "yo",
     "o'",
     "oʼ",
+    "о‘",
     "g'",
     "gʼ",
+    "g‘",
     " ye",
     " e",
     " '",
@@ -216,6 +218,8 @@ const kirilEx = [
     "ё",
     "ў",
     "ў",
+    "ў",
+    "ғ",
     "ғ",
     "ғ",
     " е",
@@ -234,27 +238,45 @@ const ClotinEx = [
     "Yo",
     "O'",
     "Oʼ",
+    "O‘",
     "G'",
+    "G‘",
     "Gʼ",
     " Ye",
     " E",
 ];
 
-const CkirilEx = ["Ш", "Ч", "Я", "Ю", "Ё", "Ў", "Ў", "Ғ", "Ғ", " Е", " Э"];
+const CkirilEx = [
+    "Ш",
+    "Ч",
+    "Я",
+    "Ю",
+    "Ё",
+    "Ў",
+    "Ў",
+    "Ў",
+    "Ғ",
+    "Ғ",
+    "Ғ",
+    " Е",
+    " Э",
+];
 
 /*
  *      Converts Lotin to Kiril
  */
 exports.ltok = (text) => {
     // exceptions are first. This one is first because it has ' and ʼ
-    for (let i = 0; i < 13; i++) {
+    text = text.replace(/‘/g, "'");
+    for (let i = 0; i < 17; i++) {
         text = text.replace(new RegExp(lotinEx[i], "g"), kirilEx[i]);
     }
 
     if (text[0] == "ъ") text[0] = "'";
+    if (text[text.length - 1] == "ъ") text[text.length - 1] = "'";
 
     // second exception
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 13; i++) {
         text = text.replace(new RegExp(ClotinEx[i], "g"), CkirilEx[i]);
     }
 
@@ -272,6 +294,8 @@ exports.ltok = (text) => {
  *      Converts Kiril to Lotin
  */
 exports.ktol = (text) => {
+    text = text.replace(/‘/g, "'");
+
     // exceptions are first. This one is first because it has ' and ʼ
     for (let i = 0; i < 13; i++) {
         text = text.replace(new RegExp(kirilEx[i], "g"), lotinEx[i]);

@@ -2,6 +2,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const errors = require("../constants/errors");
 const Quiz = require("../models/Quiz");
+const Tag = require("../models/Tag");
 const converter = require("../utils/converter");
 const mongoose = require("mongoose");
 
@@ -44,7 +45,27 @@ exports.get = catchAsync(async (req, res, next) => {
 });
 
 exports.create = catchAsync(async (req, res, next) => {
-    const { question, options, description, tags } = req.body;
+    let { question, options, description, tag, tg_msg_id } = req.body;
+
+    if (tg_msg_id) {
+        tag = converter
+            .ktol(tag)
+            .replace(/"/g, "'")
+            .replace(/hazinasi/g, "xazinasi");
+
+        let dbTag = await Tag.findOne({ "uz.name": tag }).lean();
+        if (!dbTag) {
+            dbTag = await Tag.create({
+                uz: {
+                    name: tag,
+                },
+                ru: {
+                    name: converter.ltok(tag),
+                },
+            });
+        }
+        tag = dbTag._id;
+    }
 
     let newQuiz = {
         uz: {
@@ -67,7 +88,8 @@ exports.create = catchAsync(async (req, res, next) => {
             }),
             description: converter.ltok(description),
         },
-        tags: tags,
+        tags: tag,
+        tg_msg_id: tg_msg_id ? tg_msg_id : "custom",
     };
 
     const quiz = await Quiz.create(newQuiz);
@@ -89,6 +111,31 @@ exports.update = catchAsync(async (req, res, next) => {
     res.status(200).json({
         success: true,
         data: quiz,
+    });
+});
+
+exports.tgUpdate = catchAsync(async (req, res, next) => {
+    const { id, answer } = req.body;
+
+    let quiz = await Quiz.findOne({ tg_msg_id: id });
+
+    if (!quiz) return next(new AppError(404, errors.NOT_FOUND));
+
+    for (let i = 0; i < 4; i++) {
+        quiz.uz.options[i].isCorrect = quiz.ru.options[i].isCorrect = false;
+    }
+
+    quiz.uz.options[answer].isCorrect = quiz.ru.options[
+        answer
+    ].isCorrect = true;
+    quiz.uz.description = `To'g'ri javob: ${quiz.uz.options[answer].option}!`;
+    quiz.ru.description = `Тўғри жавоб: ${quiz.ru.options[answer].option}!`;
+
+    quiz = await quiz.save();
+
+    res.status(200).json({
+        success: true,
+        data: null,
     });
 });
 
